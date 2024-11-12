@@ -1,0 +1,16 @@
+spring:
+  config:
+    import: "optional:file:.env[.properties]"
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/local_business_db?serverTimezone=UTC&characterEncoding=UTF-8
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # 개발 초기 단계에서는 'create', 'update' 가능. 배포 시에는 'none' 권장
+    show-sql: true       # 쿼리 로그를 콘솔에 출력
+    properties:
+      hibernate:
+        format_sql: true # 쿼리 로그를 포맷팅하여 가독성 향상
